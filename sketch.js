@@ -4,41 +4,43 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body5
-var paper;
-var dustbin;
-var ground;
+var paperball, box1, box2, box3, ground;
 
-function preload()
-{
-	
+
+function preload(){
+
 }
 
+	
+
+
 function setup() {
-	createCanvas(800, 700);
+	createCanvas(1600, 800);
 
 
 	engine = Engine.create();
 	world = engine.world;
 
 	//Create the Bodies Here.
-paper = new Paper(200, 100, 10, 10);
-ground = new Dustbin(200, 670, 1200, 20);
-ground2 = new Dustbin(700, 600, 30, 120);
-ground3 = new Dustbin(500, 600, 30, 120);
-ground4 = new Dustbin(600, 650, 230, 30);
+paperball = new Paper(300, 100, 87);
+box1 = new ImageBox(1200, 590, 220, 20);
+box2 = new Dustbin(1100, 530, 20, 200);
+box3 = new Dustbin(1300, 530, 20, 200);
+box3.image
+ground = new Ground(800, 780, 1600, 40);
 	Engine.run(engine);
   
 }
 
 
 function draw() {
-  rectMode(CENTER);
-  background("white");
-  paper.display();
+  background("pink");
+  paperball.display();
   ground.display();
-  ground2.display();
-  ground3.display();
-  ground4.display();
+  box2.display();
+  box3.display();
+  box1.display();
+  dustbin.display();
   drawSprites();
  
 }
@@ -46,7 +48,7 @@ function draw() {
 function keyPressed(){
   if(keyCode === UP_ARROW){
     
-    Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:200, y:-670});
+    Body.applyForce(paperball.body,paper.body.position,{x:438, y:-438});
   }
 }
 
